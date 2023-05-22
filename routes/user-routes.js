@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
   router.get('/:id', async (req, res) => {
     try {
-      const result = await User.findById(req.body.userId).populate({path: 'thoughts'})
+      const result = await User.findById(req.params.id).populate({path: 'thoughts'})
       res.status(200).json({result})
     } catch(err){
       console.log(err)
