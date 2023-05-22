@@ -1,11 +1,12 @@
 const mongoose = require('mongoose')
+const reactionSchema = require('./Reaction');
 
-const userSchema = new mongoose.Schema({
+const thoughtsSchema = new mongoose.Schema({
     thoughtText: {
         type: String,
         required: true,
-        min: 1,
-        max: 240,
+        minlength: 1,
+        maxlength: 240,
     },
     createdAt: {
         type: Date,
@@ -16,15 +17,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    reactions: {
-        // Array of nested documents created with the reaction schema
-    }
+    reactions: [reactionSchema]
 })
 
-userSchema.virtual('reactionCount').get(function(){
+thoughtsSchema.virtual('reactionCount').get(function(){
     return `${this.reactions.length}`;
 })
 
 
-const Thoughts = mongoose.model('Thoughts', userSchema);
+const Thoughts = mongoose.model('Thoughts', thoughtsSchema);
 module.exports = Thoughts
