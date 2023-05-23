@@ -36,7 +36,7 @@ An example of a valid route to create a user, with the JSON shown in the text in
 POST http://localhost:(PORT)/user
 
 {
-    "username": "Example"
+    "username": "Example",
     "email": "example@email.com"
 }
 ```
