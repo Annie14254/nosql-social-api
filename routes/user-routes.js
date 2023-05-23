@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
   router.put('/:id', async (req, res) => {
     try{
         const updateUser = await User.findByIdAndUpdate(
-            req.body.userId,
+            req.params.id,
             req.body,
             {new: true}
             )
@@ -50,7 +50,7 @@ router.get('/', async (req, res) => {
   router.delete('/:id', async (req, res) => {
     try{
         const deleteUser = await User.findByIdAndDelete(
-            req.body.userId,
+            req.params.id,
             )
         res.status(200).json({deleteUser})
     } catch(err){
@@ -58,5 +58,28 @@ router.get('/', async (req, res) => {
         res.status(400).json({err})
     }
   })
+
+  router.post('/:userId/friends/:friendId', async (req, res) => {
+    try {
+
+      // add to friends array by id of user + friend
+
+    } catch(err){
+      console.log(err)
+      res.status(400).json({err} )
+    }
+  });
+
+  router.delete('/:userId/friends/:friendId', async (req, res) => {
+    try {
+
+      // delete from friends array by id of user + friend
+
+    } catch(err){
+      console.log(err)
+      res.status(400).json({err} )
+    }
+  });
+
 
   module.exports = router
