@@ -50,12 +50,32 @@ router.get('/', async (req, res) => {
   router.delete('/:id', async (req, res) => {
     try{
         const deleteThought = await Thoughts.findByIdAndDelete(
-            req.body.userId,
+            req.params.id,
             )
         res.status(200).json({deleteThought})
     } catch(err){
         console.log(err)
         res.status(400).json({err})
+    }
+  })
+
+  router.post("/:id/reactions", async (req, res) => {
+    try{
+      // create new reaction in reactions schema (related to thought in model)
+
+    } catch (err){
+      console.log(err)
+      res.status(400).json({err})
+    }
+  })
+
+  router.delete("/:id/reactions", async (req, res) => {
+    try{
+      // delete reaction in reactions schema (related to thought in model)
+
+    } catch (err){
+      console.log(err)
+      res.status(400).json({err})
     }
   })
 
