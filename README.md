@@ -23,7 +23,7 @@ npm install
 To run locally: 
 - Clone the repository to your local computer.
 - Install all dependencies by running ```npm install``` or ```npm i``` in the integrated terminal in the root of the repository.
-- Run ```node server.js``` in the terminal to start the server. The port will be displayed in the console.
+- Run ```node server.js``` in the terminal to start the server. The port will be displayed in the console (default 3001).
 - Open Insomnia Core or a similar application and refer to the routes files for appropriate syntax for get/post/put/delete routes.
 
 An example of a valid route would be a route to get all users: 
