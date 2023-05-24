@@ -61,8 +61,13 @@ router.get('/', async (req, res) => {
 
   router.post('/:userId/friends/:friendId', async (req, res) => {
     try {
-
       // add to friends array by id of user + friend
+      const addFriend = await User.findOneAndUpdate(
+        {_id: req.params.userId},
+        {$addToSet: {friends: req.params.friendId}},
+        {new: true}
+        )
+      res.status(200).json({addFriend})
 
     } catch(err){
       console.log(err)
@@ -74,6 +79,12 @@ router.get('/', async (req, res) => {
     try {
 
       // delete from friends array by id of user + friend
+      const deleteFriend = await User.findOneAndUpdate(
+        {_id: req.params.userId},
+        {$pull: {friends: req.params.friendId}},
+        {new: true}
+        )
+      res.status(200).json({deleteFriend})
 
     } catch(err){
       console.log(err)
