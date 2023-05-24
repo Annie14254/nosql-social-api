@@ -41,7 +41,7 @@ POST http://localhost:(PORT)/user
 }
 ```
 
-A video showing the functionality of the application can be found here (placeholder).
+A video showing the functionality of the application can be found [here](https://drive.google.com/file/d/1oc_7vu65-L3opQcg1Y9m5WxkMCwBruL6/view?usp=sharing).
 
 ## Testing
 To test the application, run the following line in the terminal.
