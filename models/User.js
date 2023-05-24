@@ -11,17 +11,17 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please provide a valid email']
         // validate email here
     },
     thoughts: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Group"
+        ref: "Thoughts"
     },
-    friends: {
+    friends: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    }
+    }]
 })
 
 userSchema.virtual('friendCount').get(function(){

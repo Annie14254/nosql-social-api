@@ -59,9 +59,15 @@ router.get('/', async (req, res) => {
     }
   })
 
-  router.post("/:id/reactions", async (req, res) => {
-    try{
-      // create new reaction in reactions schema (related to thought in model)
+  router.post("/:thoughtId/reactions", async (req, res) => {
+    try {
+      // add to reactions
+      const addReaction = await Thoughts.findOneAndUpdate(
+        {_id: req.params.thoughtId},
+        {$addToSet: {reactions: req.body}},
+        {new: true}
+        )
+      res.status(200).json({addReaction})
 
     } catch (err){
       console.log(err)
@@ -69,9 +75,16 @@ router.get('/', async (req, res) => {
     }
   })
 
-  router.delete("/:id/reactions", async (req, res) => {
-    try{
-      // delete reaction in reactions schema (related to thought in model)
+  router.delete("/:thoughtId/reactions/:reactionId", async (req, res) => {
+    try {
+
+      // delete from reactions
+      const deleteReaction = await Thoughts.findOneAndUpdate(
+        {_id: req.params.thoughtId},
+        {$pull: {reactions: {reactionId: req.params.reactionId}}},
+        {new: true}
+        )
+      res.status(200).json({deleteReaction})
 
     } catch (err){
       console.log(err)
